@@ -61,7 +61,7 @@ const teacherOptions = [
   "Mrs. Tuti Susanti",
 ];
 
-const pembayaranOptions = ["Tunai/Cash", "Transfer Bank", "QRIS"];
+const pembayaranOptions = ["Transfer Bank", "QRIS"] as const;
 
 /* ---------- tujuan pengiriman ---------- */
 
@@ -95,7 +95,7 @@ export const formSchema = z.object({
   jamBelajar: z.array(z.string()).min(1, "Pilih minimal satu waktu jam belajar"),
   jadwal: z.array(z.string()).min(4, "Pilih minimal 4 hari (Senin sampai Sabtu)"),
   teacher: z.string().min(1, "Pilih guru pembimbing Anda"),
-  pembayaran: z.string().min(1, "Pilih metode pembayaran"),
+  pembayaran: z.enum(pembayaranOptions, { message: "Pilih metode pembayaran" }),
 });
 
 type FormData = z.infer<typeof formSchema>;

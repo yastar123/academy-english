@@ -16,7 +16,7 @@ const base = {
   jamBelajar: ["08.00–09.00"],
   jadwal: [] as string[],
   teacher: "Mr. Antonius Martin S.Pd",
-  pembayaran: "Tunai/Cash",
+  pembayaran: "Transfer Bank",
 };
 
 describe("Jadwal belajar requires at least 4 days", () => {
@@ -35,5 +35,17 @@ describe("Jadwal belajar requires at least 4 days", () => {
       jadwal: ["Senin", "Selasa", "Rabu", "Kamis"],
     });
     expect(four.success).toBe(true);
+  });
+});
+
+describe("Metode pembayaran", () => {
+  it("rejects Tunai/Cash", () => {
+    const result = formSchema.safeParse({
+      ...base,
+      jadwal: ["Senin", "Selasa", "Rabu", "Kamis"],
+      pembayaran: "Tunai/Cash",
+    });
+
+    expect(result.success).toBe(false);
   });
 });
