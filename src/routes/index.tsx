@@ -271,11 +271,14 @@ function LandingPage() {
 function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <a href="#" className="flex items-center gap-3">
-          <img src={logo} alt="Logo Academy English Course" className="size-10" />
-          <span className="font-display text-lg font-bold uppercase tracking-tight">
-            Academy<span className="text-accent">·</span>English
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+        <a href="#" className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <img src={logo} alt="Logo Academy English Course" className="size-8 sm:size-10" />
+          <span className="font-display text-sm font-bold uppercase tracking-tight sm:text-lg">
+            Academy
+            <span className="hidden min-[360px]:inline">
+              <span className="text-accent">·</span>English
+            </span>
           </span>
         </a>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
@@ -286,10 +289,10 @@ function Header() {
         </nav>
         <Link
           to="/pendaftaran"
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-transform hover:scale-[1.03] active:scale-95"
+          className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-3 py-2 text-xs font-semibold text-accent-foreground transition-transform hover:scale-[1.03] active:scale-95 sm:gap-2 sm:px-4 sm:text-sm"
         >
-          Daftar Sekarang
-          <ArrowUpRight className="size-4" />
+          Daftar<span className="hidden min-[360px]:inline"> Sekarang</span>
+          <ArrowUpRight className="size-3.5 sm:size-4" />
         </Link>
       </div>
     </header>
