@@ -1,0 +1,129 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — Academy English Course
+ * Arah visual: ceria dan tegas seperti materi promosi lembaga. Putih bersih,
+ * biru navy sebagai warna utama, kuning cerah sebagai aksen.
+ * Semua warna dalam oklch, hanya lewat token semantik.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 28s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Tema putih–biru–kuning: latar putih bersih, primer biru navy, aksen kuning */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.26 0.09 264);
+  --card: oklch(0.985 0.006 255);
+  --card-foreground: oklch(0.26 0.09 264);
+  --popover: oklch(0.985 0.006 255);
+  --popover-foreground: oklch(0.26 0.09 264);
+  /* Biru navy — warna utama teks, tombol, dan panel */
+  --primary: oklch(0.4 0.14 264);
+  --primary-foreground: oklch(0.99 0.002 255);
+  /* Biru muda untuk latar sekunder */
+  --secondary: oklch(0.945 0.03 252);
+  --secondary-foreground: oklch(0.26 0.09 264);
+  --muted: oklch(0.955 0.018 252);
+  --muted-foreground: oklch(0.46 0.06 264);
+  /* Kuning cerah — aksen CTA, badge, dan highlight */
+  --accent: oklch(0.85 0.17 96);
+  --accent-foreground: oklch(0.26 0.09 264);
+  --destructive: oklch(0.577 0.215 27);
+  --destructive-foreground: oklch(0.99 0.002 255);
+  --border: oklch(0.26 0.09 264 / 14%);
+  --input: oklch(0.26 0.09 264 / 18%);
+  --ring: oklch(0.4 0.14 264);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+/* Judul display besar, rapat */
+@utility display-hero {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+/* Teks outline (stroke) untuk kata kedua headline awwwards-style */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-foreground);
+}
+
+/* Baris reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
