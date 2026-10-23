@@ -419,6 +419,26 @@ function RegistrationForm() {
           onToggle={(v) => setPembayaran((prev) => (prev === v ? "" : v))}
           error={errors["pembayaran"]}
         />
+        {pembayaran === "Transfer Bank" && (
+          <div
+            aria-live="polite"
+            className="rounded-2xl border border-border bg-background p-5"
+          >
+            <h3 className="font-display text-lg font-bold text-primary">
+              Detail Transfer Bank Muamalat
+            </h3>
+            <dl className="mt-4 space-y-3 text-sm">
+              <div>
+                <dt className="text-muted-foreground">Nomor rekening</dt>
+                <dd className="font-semibold">3180013152</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">Atas nama</dt>
+                <dd className="font-semibold">Ismi Mudzalifa</dd>
+              </div>
+            </dl>
+          </div>
+        )}
         {pembayaran === "QRIS" && (
           <div aria-live="polite" className="rounded-2xl border border-border bg-background p-5">
             <h3 className="font-display text-lg font-bold text-primary">
