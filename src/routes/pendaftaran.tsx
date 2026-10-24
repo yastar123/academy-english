@@ -441,28 +441,11 @@ function RegistrationForm() {
         )}
         {pembayaran === "QRIS" && (
           <div aria-live="polite" className="rounded-2xl border border-border bg-background p-5">
-            <h3 className="font-display text-lg font-bold text-primary">
-              QRIS Academy English Course sudah aktif!
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Scan kode QRIS GoPay Merchant berikut menggunakan aplikasi pembayaran apa pun yang
-              terdaftar di sistem QRIS.
-            </p>
             <img
               src={qrisImage}
               alt="Kode QRIS GoPay Merchant Academy English Course"
               className="mx-auto mt-5 w-full max-w-sm rounded-xl border border-border"
             />
-            <div className="mt-5 space-y-2 text-sm leading-relaxed">
-              <p>
-                Pastikan nama toko yang muncul adalah <strong>Academy English Course</strong>{" "}
-                sebelum melanjutkan pembayaran.
-              </p>
-              <p className="text-muted-foreground">
-                Untuk tes transaksi pertama, lakukan transaksi terlebih dahulu dan pastikan
-                pembayaran berhasil. Transaksi Rp500.000 ke bawah bebas biaya potongan QRIS 0%.
-              </p>
-            </div>
           </div>
         )}
       </Card>
